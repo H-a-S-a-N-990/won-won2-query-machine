@@ -1,0 +1,29 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Test CLI
+        run: |
+          echo "Hello from GitHub Actions!"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Branch: $GITHUB_REF_NAME"
+          echo "Commit: $GITHUB_SHA"
+
+      - name: Show files
+        run: |
+          pwd
+          ls -la
+
+      - name: Test completed
+        run: echo "GitHub Actions test PASSED"
